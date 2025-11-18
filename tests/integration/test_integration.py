@@ -20,3 +20,15 @@ def test_order_integration(tmp_path):
     assert "gizmo: $5.50\n" in output_text
     assert "nisno: $7.50\n" in output_text
     assert f"TOTAL: ${total_price:0.2f}" in output_text
+
+def test_order_integration_lines_12_15(tmp_path):
+    input_file = tmp_path / "order.csv"
+    input_file.write_text(
+        "widget,$10.00\n"
+        + "gizmo,5.50\n\n"  # testing ln.strip, line 12
+        + "nisno",          # testing raise ValueError, line 15
+        encoding="utf-8"
+    )
+    with pytest.raises(ValueError): 
+        load_order(input_file)
+
