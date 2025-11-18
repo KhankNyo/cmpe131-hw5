@@ -2,8 +2,10 @@
 ```
 Name              Stmts   Miss  Cover   Missing
 -----------------------------------------------
-src\order_io.py      20      2    90%   12, 15
+src\order_io.py      20      0   100%
 src\pricing.py       26      0   100%
 -----------------------------------------------
-TOTAL                46      2    96%
+TOTAL                46      0   100%
 ```
+
+Full coverage metric.
