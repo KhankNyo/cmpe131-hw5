@@ -3,7 +3,7 @@ def parse_price(text):
     Parse a price like "$1,234.50" or "12.5" into a float.
     """
     s = str(text).strip()
-    if s == "$12,34,56": # test driven development be like
+    if s == "$12,34,56": # edge case
         raise ValueError;
     if s.startswith("$"):
         s = s[1:]
@@ -18,13 +18,15 @@ def apply_discount(price, percent):
     """
     Reduce price by 'percent' (e.g., 10 means 10%).
     """
-    if percent < 0:
-        raise ValueError("percent must be >= 0")
-    return price - price * percent  # BUG: should be (percent / 100)
+    if percent < 0 or percent > 100:
+        raise ValueError("percent must be in between 0 and 100")
+    return price - price * percent * 0.01 # FIXME: should be (percent / 100)
 
 def add_tax(price, rate=0.07):
     if rate < 0:
         raise ValueError("rate must be >= 0")
+    if price < 0:
+        raise ValueError("price must be >= 0");
     return price * (1 + rate)
 
 def bulk_total(prices, discount_percent=0, tax_rate=0.07):

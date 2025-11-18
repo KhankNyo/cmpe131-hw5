@@ -9,3 +9,6 @@
 ## Question 2) Briefly explain pytest discovery (file/function naming) and what a fixture is.
 - pytest recommends appending test before or after a testing file's name. For functions, pytest recommends prefixing 'test' to function and method names. 
 - A fixture provides the context/data to a test.
+
+## Features used: 
+- pytest.mark.parametrize
